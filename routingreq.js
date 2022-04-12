@@ -18,15 +18,31 @@ server.listen(8000);
 
 const express=require('express');
 
+const bodyParser=require('body-parser');
+
 const app=express();
 
-app.use((req,res,next)=>{
+app.use(bodyParser.urlencoded({extended:false}));
+
+/*app.use((req,res,next)=>{
     console.log('in the middelware');
-    next();   //allow the request to continue to the next middelware in line
+    // next();   //allow the request to continue to the next middelware in line
+});*/
+
+
+
+app.use( '/add-product', (req,res,next)=>{
+   
+    res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit" >add product</button></form>');
 });
 
-app.use((req,res,next)=>{
-    console.log('in another middelware');
+app.use('/product',(req,res,next)=> {
+console.log(req.body);
+res.redirect('/');
+});
+
+app.use( '/', (req,res,next)=>{
+    
     res.send('<h1>hello from express js</h1>');
 });
 

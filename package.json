@@ -2,17 +2,56 @@
 
 
   "name": "firstapp",
+
+
   "version": "1.0.0",
+
+
   "description": "Complete Node.js Guide",
+
+
   "main": "first-app.js",
+
+
   "scripts": {
+
+
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node routingreq.js", 
+
+
+    "start": "node routingreq.js",
+
+
     "start-server": "nodemon routingreq.js"
+
+
   },
+
+
   "author": "lucky rathoure",
+
+
   "license": "ISC",
+
+
   "devDependencies": {
+
+
     "nodemon": "^2.0.15"
+
+
+  },
+
+
+  "dependencies": {
+
+
+    "express": "^4.17.3"
+
+
   }
+
+
 }
+
+

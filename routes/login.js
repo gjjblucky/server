@@ -1,47 +1,51 @@
+const path=require('path');
 const express =require('express');
 
 const router=express.Router();
 
-router.get( '/chat', (req,res,next)=>{
+router.get( '/login', (req,res,next)=>{
     
-    res.send(`<form  action="/login/chat" onsubmit="localStorage.setItem('username',document.getElementById('username').value)" 
-    method="post"> <input id="message" type="text" name="message" >
-    <input id="username" type="hidden" name="username" >
-    <button type="submit">send</button></form>`)
+    res.sendFile(path.join(__dirname,'../','views','chatlogin.html'));
     
 });
 
 
-// router.get('/c',(req,res,next)=> {
+router.get('/chat',(req,res,next)=> {
     
     
         
-//       res.send(`<form action="/login/chat" onsubmit="localStorage.setItem('message',document.getElementById('message').value)" 
-//     method="post"> 
-//     <input type="type" name="message" id="message">
-//     <button type="submit">send</button></form>`)
-        
-       
+        res.sendFile(path.join(__dirname,'../','views','chatmessage.html'));
+});
 
-
-// // console.log(req.body.username);
-
-// });
-
-
+var data;
+router.post('/login',(req,res,next)=> {
+   
+        data=req.body.username;
+    
+    
+    res.redirect('/chat');
+});
 router.post('/chat',(req,res,next)=> {
    
         
-    
+    console.log(`${data}:${req.body.message}`);
+    res.redirect('/');
     
 });
-// router.post('/c',(req,res,next)=> {
-   
-        
-//     console.log(req.body);
-//     res.redirect('/');
+router.get( '/contactus', (req,res,next)=>{
     
-// });
+    res.sendFile(path.join(__dirname,'../','views','contactus.html'));
+    
+});
+
+router.post('/contactus',(req,res,next)=> {
+   
+
+    console.log(req.body);
+
+
+res.redirect('/');
+});
 
 
 module.exports=router;

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <STYLE>
+         body{
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        main{
+            padding: 1rem;
+        }
+        .main-header{
+    width: 100%;
+    height: 5.5rem;
+    background-color: #5ed0c1;
+    padding: 0 1.5rem;
+}
+.main-header__nav{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.main-header__item-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.main-header__item{
+    padding: 0;
+            margin: 0 1.5rem;
+}
+.main-header__item a{
+    text-decoration: none;
+    color: black;
+}
+.main-header__item a:hover,
+.main-header__item a:active,
+.main-header__item a.active{
+ color: #1131e8f5;
+}
+.form{
+    width:30rem ;
+    max-width: 90%;
+    margin: auto;
+}
+
+.formdiv{
+    margin: 1rem 0;
+}
+
+.formdiv label,
+.formdiv input{
+
+    display: block;
+    width: 100%;
+}
+
+.formdiv input{
+    border: 1px solid rgba(235, 200, 26, 0.925);
+    font: inherit;
+    border-radius: 2px;
+}
+button{
+      font: inherit;
+      border: 1px solid purple;
+      color: purple;
+background: white;
+border-radius: 3px;
+cursor: pointer;
+}
+
+button:hover,
+button:active{
+    background-color: purple;
+    color: white;
+}
+
+    </STYLE>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item"><a   href="/login">loged in</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form  class="form" action="/contactus" method="POST">
+<div class="formdiv">
+    <label for="name">Name</label>
+    <input type="text" id="name" placeholder="enter your name" required><br>
+    <label for="email">Email Id</label>
+    <input type="text" id="email" placeholder="enter your emial id" required><br>
+    <label for="number">Phone </label>
+    <input type="text" id="phone no." placeholder="enter your phone no." required><br>
+    <label for="call">Time for call</label>
+    <input type="datetime-local" id="datetime"><br>
+</div>
+<button type="submit"> GET A CALL</button>
+
+
+        </form>
+    </main>
+</body>
+</html>

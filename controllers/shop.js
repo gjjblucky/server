@@ -4,11 +4,12 @@ const Cart = require('../models/cart');
 exports.getProducts = (req, res, next) => {
   Product.findAll()
   .then(products =>{
-    res.render('shop/product-list', {
-      prods: products,
-      pageTitle: 'All Products',
-      path: '/products'
-    });
+    res.json({products, sucess:true})
+    // res.render('shop/product-list', {
+    //   prods: products,
+    //   pageTitle: 'All Products',
+    //   path: '/products'
+    // });
   })
   .catch(err => { console.log(err)});
 };
@@ -72,9 +73,9 @@ exports.postCart = (req, res, next) => {
     })
     .then(products => {
       let product;
-      if (products.length > 0) {
-        product = products[0];
-      }
+      // if (products.length > 0) {
+      //   product = products[0];
+      // }
 
       if (product) {
         const oldQuantity = product.cartItem.quantity;
@@ -89,9 +90,12 @@ exports.postCart = (req, res, next) => {
       });
     })
     .then(() => {
-      res.redirect('/cart');
+      // res.redirect('/cart');
+      res.status(200).json({success: true, message:"successfully added"});
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      res.status(500).json({sucess:false ,message:"error occupied"});
+    });
 };
 
 exports.postCartDeleteProduct = (req, res, next) => {

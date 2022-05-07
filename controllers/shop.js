@@ -50,21 +50,25 @@ exports.getCart = (req, res, next) => {
       return cart
         .getProducts()
         .then(products => {
-          res.render('shop/cart', {
-            path: '/cart',
-            pageTitle: 'Your Cart',
-            products: products
-          });
+          res.status(200).json({success:true, products:products});
+          // res.render('shop/cart', {
+          //   path: '/cart',
+          //   pageTitle: 'Your Cart',
+          //   products: products
+          // });
         })
-        .catch(err => console.log(err));
+        .catch(err =>{res.status(500).json({success:false,message:"err"});});
     })
-    .catch(err => console.log(err));
+    .catch(err =>{ res.status(500).json({success:false,message:"err"});});
 };
 
 exports.postCart = (req, res, next) => {
+  if(!req.body.productId){
+    res.status(400).json({success:false, message:"productId missing"});
+  }
   const prodId = req.body.productId;
   let fetchedCart;
-  let newQuantity = 1;
+  let newQuantity = 1; 
   req.user
     .getCart()
     .then(cart => {
